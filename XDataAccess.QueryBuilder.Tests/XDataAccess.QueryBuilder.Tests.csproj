@@ -2,16 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-
+    <RuntimeFrameworkVersion>2.2</RuntimeFrameworkVersion>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\XDataAccess.QueryBuilder\XDataAccess.QueryBuilder.csproj" />
   </ItemGroup>
