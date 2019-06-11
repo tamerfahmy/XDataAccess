@@ -19,6 +19,11 @@ namespace XDataAccess.QueryBuilder.Metadata
             }
         }
 
+        public AttributeMetadata GetAttribute(string propertyName)
+        {
+            return Attributes.FirstOrDefault(a => a.PropertyName == propertyName);
+        }
+
         public static EntityMetadata Parse<TEntity>() where TEntity : class
         {
             var entityName = GetEntityName<TEntity>();

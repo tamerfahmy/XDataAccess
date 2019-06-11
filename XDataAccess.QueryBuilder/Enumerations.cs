@@ -6,7 +6,7 @@ namespace XDataAccess.QueryBuilder
     {
         MySql,
         SqlServer,
-        PostgreSQL,
+        PostgresSQL,
         Oracle,
         Sqlite
     }

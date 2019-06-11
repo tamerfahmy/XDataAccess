@@ -28,20 +28,22 @@ namespace XDataAccess.QueryBuilder
             _compiler = compiler;
         }
 
-        public ICompileResult Insert(TEntity entity)
+        public IResult Insert(TEntity entity)
         {
             var insert = new Insert(_compiler);
             return insert.Compile(entity);
         }
 
-        public ICompileResult Delete()
+        public IResult Delete()
         {
-            throw new NotImplementedException();
+            var delete = new Delete(_compiler);
+            return delete.Compile<TEntity>();
         }
 
-        public ICompileResult Delete(Expression<Func<TEntity, bool>> exp)
+        public IResult Delete(Expression<Func<TEntity, bool>> exp)
         {
-            throw new NotImplementedException();
+            var delete = new Delete(_compiler);
+            return delete.Compile(exp);
         }
 
         public void Dispose()

@@ -31,6 +31,18 @@ namespace XDataAccess.QueryBuilder.Dialects
 
         string Values { get; }
 
+        string And { get; }
+
+        string Or { get; }
+
+        string Where { get; }
+
+        string Like { get; }
+
+        string Quote { get; }
+
+        string AppendParameter { get; }
+
         string GetEntityName(string entityName);
 
         string GetAttributeName(string entityName, string attributeName);

@@ -6,6 +6,6 @@ namespace XDataAccess.QueryBuilder.Dialects.Databases
 {
     public sealed class PostgresDialect : BaseDialect
     {
-
+        public override string AppendParameter => "||";
     }
 }

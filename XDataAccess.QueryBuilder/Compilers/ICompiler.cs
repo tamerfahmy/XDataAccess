@@ -1,3 +1,5 @@
+using System;
+using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Dialects;
 using XDataAccess.QueryBuilder.Expressions;
 
@@ -9,6 +11,10 @@ namespace XDataAccess.QueryBuilder.Compilers
 
         IDialect Dialect { get; }
 
-        ICompileResult CompilerInsert<TEntity>(TEntity entity) where TEntity : class;
+        IResult CompilerInsert<TEntity>(TEntity entity) where TEntity : class;
+
+        IResult CompilerDelete<TEntity>() where TEntity : class;
+
+        IResult CompilerDelete<TEntity>(Expression<Func<TEntity, bool>> exp) where TEntity : class;
     }
 }

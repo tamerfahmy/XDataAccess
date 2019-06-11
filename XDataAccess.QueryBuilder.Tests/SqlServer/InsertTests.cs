@@ -20,7 +20,7 @@ namespace XDataAccess.QueryBuilder.Tests.SqlServer
                 Name = "Employee Name"
             };
 
-            var result = builder.Insert(employee) as DbCompilerResult;
+            var result = builder.Insert(employee) as DbCompileResult;
 
             Assert.NotNull(result.QueryParameters);
             Assert.Equal(2, result.QueryParameters.Count);
@@ -41,7 +41,7 @@ namespace XDataAccess.QueryBuilder.Tests.SqlServer
                 Name = "Employee Name"
             };
 
-            var result = builder.Insert(employee) as DbCompilerResult;
+            var result = builder.Insert(employee) as DbCompileResult;
 
             Assert.NotNull(result.QueryParameters);
             Assert.Equal(1, result.QueryParameters.Count);

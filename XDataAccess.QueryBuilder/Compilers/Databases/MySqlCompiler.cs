@@ -1,5 +1,6 @@
 using XDataAccess.QueryBuilder.Dialects.Databases;
 using XDataAccess.QueryBuilder.Expressions;
+using XDataAccess.QueryBuilder.Expressions.Databases;
 
 namespace XDataAccess.QueryBuilder.Compilers.Databases
 {

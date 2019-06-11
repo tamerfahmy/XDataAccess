@@ -12,7 +12,7 @@ namespace XDataAccess.QueryBuilder.CRUD
         {
             Compiler = compiler;
         }
-        public ICompileResult Compile<TEntity>(TEntity entity) where TEntity : class
+        public IResult Compile<TEntity>(TEntity entity) where TEntity : class
         {
             return Compiler.CompilerInsert(entity);
         }

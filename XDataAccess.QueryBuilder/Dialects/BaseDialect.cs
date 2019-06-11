@@ -46,6 +46,18 @@ namespace XDataAccess.QueryBuilder.Dialects
 
         public virtual string Values => "VALUES";
 
+        public virtual string And => "AND";
+
+        public virtual string Or => "OR";
+
+        public virtual string Where => "WHERE";
+
+        public virtual string Like => "LIKE";
+
+        public virtual string Quote => "'";
+
+        public virtual string AppendParameter => "+";
+
         public virtual string GetAttributeName(string entityName, string attributeName)
         {
             return $"{OpeningIdentifier}{entityName}{ClosingIdentifier}.{OpeningIdentifier}{attributeName}{ClosingIdentifier}";
