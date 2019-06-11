@@ -1,3 +1,4 @@
+using XDataAccess.QueryBuilder.Dialects;
 using XDataAccess.QueryBuilder.Expressions;
 
 namespace XDataAccess.QueryBuilder.Compilers
@@ -6,5 +7,8 @@ namespace XDataAccess.QueryBuilder.Compilers
     {
         IExpressionResolver Resolver { get; }
 
+        IDialect Dialect { get; }
+
+        ICompileResult CompilerInsert<TEntity>(TEntity entity) where TEntity : class;
     }
 }

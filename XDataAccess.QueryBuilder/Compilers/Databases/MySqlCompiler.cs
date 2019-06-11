@@ -3,11 +3,12 @@ using XDataAccess.QueryBuilder.Expressions;
 
 namespace XDataAccess.QueryBuilder.Compilers.Databases
 {
-    public sealed class MySqlCompiler : BaseCompiler
+    public sealed class MySqlCompiler : BaseDbCompiler
     {
-        public MySqlCompiler() : base(new MySqlExpressionResolver(new MySqlDialect()))
+        public MySqlCompiler()
         {
-
+            Dialect = new MySqlDialect();
+            Resolver = new MySqlExpressionResolver(Dialect);
         }
     }
 }

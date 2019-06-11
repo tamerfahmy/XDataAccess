@@ -22,6 +22,15 @@ namespace XDataAccess.QueryBuilder.Dialects
         string Is { get; }
         string IsNot { get; }
 
+        string Insert { get; }
+        string Select { get; }
+
+        string Delete { get; }
+
+        string Update { get; }
+
+        string Values { get; }
+
         string GetEntityName(string entityName);
 
         string GetAttributeName(string entityName, string attributeName);

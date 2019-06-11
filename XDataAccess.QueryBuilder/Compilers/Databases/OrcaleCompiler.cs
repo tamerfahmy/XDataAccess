@@ -4,10 +4,12 @@ using XDataAccess.QueryBuilder.Expressions;
 
 namespace XDataAccess.QueryBuilder.Compilers.Databases
 {
-    public sealed class OrcaleCompiler : BaseCompiler
+    public sealed class OrcaleCompiler : BaseDbCompiler
     {
-        public OrcaleCompiler() : base(new OracleExpressionResolver(new OracleDialect()))
+        public OrcaleCompiler()
         {
+            Dialect = new OracleDialect();
+            Resolver = new OracleExpressionResolver(Dialect);
         }
     }
 }

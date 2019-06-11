@@ -4,11 +4,12 @@ using XDataAccess.QueryBuilder.Expressions;
 
 namespace XDataAccess.QueryBuilder.Compilers.Databases
 {
-    public sealed class PostgresCompiler : BaseCompiler
+    public sealed class PostgresCompiler : BaseDbCompiler
     {
-        public PostgresCompiler() : base(new PostgresExpressionResolver(new PostgresDialect()))
+        public PostgresCompiler()
         {
-
+            Dialect = new PostgresDialect();
+            Resolver = new PostgresExpressionResolver(Dialect);
         }
     }
 }

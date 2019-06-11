@@ -4,11 +4,12 @@ using XDataAccess.QueryBuilder.Expressions;
 
 namespace XDataAccess.QueryBuilder.Compilers.Databases
 {
-    public sealed class SqlServerCompiler : BaseCompiler
+    public sealed class SqlServerCompiler : BaseDbCompiler
     {
-        public SqlServerCompiler() : base(new SqlServerExpressionResolver(new SqlServerDialect()))
+        public SqlServerCompiler()
         {
-
+            Dialect = new SqlServerDialect();
+            Resolver = new SqlServerExpressionResolver(Dialect);
         }
     }
 }

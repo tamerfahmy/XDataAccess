@@ -20,15 +20,13 @@ namespace XDataAccess.QueryBuilder.Tests.MySql
                 Name = "Employee Name"
             };
 
-            builder.Insert(employee);
+            var result = builder.Insert(employee) as DbCompilerResult;
 
-            //var sql = builder.SqlQuery;
-
-            //Assert.NotNull(builder.QueryParameters);
-            //Assert.Equal(2, builder.QueryParameters.Count);
-            //Assert.Equal(builder.QueryParameters["@P0"], employee.Id);
-            //Assert.Equal(builder.QueryParameters["@P1"], employee.Name);
-            //Assert.Equal("INSERT INTO Employee (`Id`, `Name`) VALUES (@P0, @P1)", sql);
+            Assert.NotNull(result.QueryParameters);
+            Assert.Equal(2, result.QueryParameters.Count);
+            Assert.Equal(result.QueryParameters["@P0"], employee.Id);
+            Assert.Equal(result.QueryParameters["@P1"], employee.Name);
+            Assert.Equal("INSERT INTO Employee (`Id`,`Name`) VALUES (@P0,@P1)", result.SqlQuery);
         }
 
         [Fact]
@@ -43,14 +41,12 @@ namespace XDataAccess.QueryBuilder.Tests.MySql
                 Name = "Employee Name"
             };
 
-            builder.Insert(employee);
+            var result = builder.Insert(employee) as DbCompilerResult;
 
-            //var sql = builder.SqlQuery;
-
-            //Assert.NotNull(builder.QueryParameters);
-            //Assert.Equal(1, builder.QueryParameters.Count);
-            //Assert.Equal(builder.QueryParameters["@P0"], employee.Name);
-            //Assert.Equal("INSERT INTO dbo.employee (`name`) VALUES (@P0)", sql);
+            Assert.NotNull(result.QueryParameters);
+            Assert.Equal(1, result.QueryParameters.Count);
+            Assert.Equal(result.QueryParameters["@P0"], employee.Name);
+            Assert.Equal("INSERT INTO dbo.employee (`name`) VALUES (@P0)", result.SqlQuery);
         }
     }
 }
