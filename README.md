@@ -1,9 +1,9 @@
-# xDataAccess
-----
+## xDataAccess (Generate, Execute and Manage)
+
 ### WhatIs((x, DataAccess) => { x = "Generic"; DataAccess = "Data Access Layer"; });
 xDataAccess is an open-source cross-platform framework to dynamically build quires from lambda expression up to providing a complete data access layer for different data sources from the query generation up to the execution and data manipulation. It is Generic and extensible with different data source dialects.
 
-### Libraries
+#### Libraries
 | Project | Pipeline  Status | Latest Release |
 | --- | --- | --- |
 | XDataAccess.QueryBuilder | [![Build Status](https://tamerfahmy.visualstudio.com/XDataAccess/_apis/build/status/tamerfahmy.XDataAccess?branchName=master)](https://tamerfahmy.visualstudio.com/XDataAccess/_build/latest?definitionId=6&branchName=master) |  | XDataAccess.Dapper |  |  |
@@ -13,7 +13,7 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
 | XDataAccess.CDS |  |  |
 | XDataAccess.CDSRepository |  |  |
 
-### Features:
+#### Features:
 - [x]  **Query Generation**
   - [x] Sql Server dialect
   - [x] Oracle dialect
@@ -29,8 +29,8 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
 - [ ]  **MS Common Data Service**
   - [ ] Adding support to Microsoft Common Data Service (CDS)
   
-### How to Use:
-### Models:
+#### How to Use:
+##### Models:
 ```csharp
 public class Employee
 {
@@ -51,12 +51,12 @@ public class EmployeeWithAttributes
     public DateTime CreateDate { get; set; }
 }
 ```
-#### XDataAccess.QueryBuilder
+##### XDataAccess.QueryBuilder
 ```csharp
 var compiler = new SqlServerCompiler();
 var builder = new QueryBuilder<EmployeeWithAttributes>(compiler);
 ```
-#### Select
+###### Select
 ```csharp
 var output1 = builder.Select() as DbCompileResult; 
 // "SELECT * FROM dbo.employee"
@@ -71,25 +71,25 @@ var output4 = builder.Select(e => e.Name.Contains ("test")) as DbCompileResult;
 // "SELECT * FROM dbo.employee WHERE ([name] LIKE '%' + @P0 + '%')"
 ```
 
-#### Update
+###### Update
 ```csharp
 var employeeToUpdate = new EmployeeWithAttributes() { Id = 1, Name = "test" };
 var result = builder.Update(employeeToUpdate) as DbCompileResult; 
 // "UPDATE dbo.employee SET [name] = @P0 WHERE [Id] = @P1"
 ```
-Or
+###### Or
 ```csharp
 var result = builder.Update(employeeToUpdate, e => e.Id == 1) as DbCompileResult; 
 // "UPDATE dbo.employee SET [name] = @P0 WHERE ([Id] = @P1)"
 ```
 
-#### Delete
+###### Delete
 ```csharp
 var result = builder.Delete (e => e.Id == 1) as DbCompileResult; 
 // "DELETE FROM Employee WHERE ([Id] = @P0)"
 ```
 
-#### Insert
+###### Insert
 ```csharp
 var employee = new Employee() { Id = 1, Name = "Employee Name" };
 var result = builder.Insert(employee) as DbCompileResult; 
