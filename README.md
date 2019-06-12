@@ -1,7 +1,19 @@
-## xDataAccess (Generate, Execute and Manage)
+## xDataAccess
 
 ### WhatIs((x, DataAccess) => { x = "Generic"; DataAccess = "Data Access Layer"; });
 xDataAccess is an open-source cross-platform framework to dynamically build quires from lambda expression up to providing a complete data access layer for different data sources from the query generation up to the execution and data manipulation. It is Generic and extensible with different data source dialects.
+
+<!-- TOC -->
+- [Libraries](#libraries)
+- [Features](#features)
+- [How to Use](#how-to-use)
+  - [Models](#models)
+  - [XDataAccess.QueryBuilder](#xdataaccessquerybuilder)
+    - [Select](#select)
+    - [Update](#update)
+    - [Delete](#delete)
+    - [Insert](#insert)
+<!-- /TOC -->
 
 #### Libraries
 | Project | Pipeline  Status | Latest Release |
@@ -13,7 +25,7 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
 | XDataAccess.CDS |  |  |
 | XDataAccess.CDSRepository |  |  |
 
-#### Features:
+#### Features
 - [x]  **Query Generation**
   - [x] Sql Server dialect
   - [x] Oracle dialect
@@ -29,8 +41,8 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
 - [ ]  **MS Common Data Service**
   - [ ] Adding support to Microsoft Common Data Service (CDS)
   
-#### How to Use:
-##### Models:
+#### How to Use
+##### Models
 ```csharp
 public class Employee
 {
