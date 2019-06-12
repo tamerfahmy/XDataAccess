@@ -14,11 +14,7 @@ namespace XDataAccess.QueryBuilder.Tests.SqlServer
             var compiler = new SqlServerCompiler();
             var builder = new QueryBuilder<Employee>(compiler);
 
-            var employee = new Employee()
-            {
-                Id = 1,
-                Name = "Employee Name"
-            };
+            var employee = new Employee() { Id = 1, Name = "Employee Name" };
 
             var result = builder.Insert(employee) as DbCompileResult;
 
