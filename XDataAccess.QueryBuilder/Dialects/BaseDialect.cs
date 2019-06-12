@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace XDataAccess.QueryBuilder.Dialects {
-    public abstract class BaseDialect : IDialect {
+namespace XDataAccess.QueryBuilder.Dialects
+{
+    public abstract class BaseDialect : IDialect
+    {
         public virtual string ParameterPrefix => "@";
 
         public virtual string OpeningIdentifier => "\"";
@@ -42,6 +44,8 @@ namespace XDataAccess.QueryBuilder.Dialects {
 
         public virtual string Update => "UPDATE";
 
+        public virtual string From => "FROM";
+
         public virtual string Values => "VALUES";
 
         public virtual string And => "AND";
@@ -58,11 +62,13 @@ namespace XDataAccess.QueryBuilder.Dialects {
 
         public virtual string Set => "SET";
 
-        public virtual string GetAttributeName (string entityName, string attributeName) {
+        public virtual string GetAttributeName(string entityName, string attributeName)
+        {
             return $"{OpeningIdentifier}{entityName}{ClosingIdentifier}.{OpeningIdentifier}{attributeName}{ClosingIdentifier}";
         }
 
-        public virtual string GetEntityName (string entityName) {
+        public virtual string GetEntityName(string entityName)
+        {
             return $"{OpeningIdentifier}{entityName}{ClosingIdentifier}";
         }
     }

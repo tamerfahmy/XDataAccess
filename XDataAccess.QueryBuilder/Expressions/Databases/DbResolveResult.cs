@@ -4,7 +4,7 @@ using XDataAccess.QueryBuilder.Dialects;
 
 namespace XDataAccess.QueryBuilder.Expressions.Databases
 {
-    internal sealed class DbResolveResult : IResult
+    public sealed class DbResolveResult : IResult
     {
         public IDictionary<string, object> QueryParameters { get; set; }
 

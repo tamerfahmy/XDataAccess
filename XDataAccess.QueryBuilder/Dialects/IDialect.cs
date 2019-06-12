@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace XDataAccess.QueryBuilder.Dialects {
-    public interface IDialect {
+namespace XDataAccess.QueryBuilder.Dialects
+{
+    public interface IDialect
+    {
         string ParameterPrefix { get; }
         string OpeningIdentifier { get; }
         string ClosingIdentifier { get; }
@@ -21,11 +23,14 @@ namespace XDataAccess.QueryBuilder.Dialects {
         string IsNot { get; }
 
         string Insert { get; }
+
         string Select { get; }
 
         string Delete { get; }
 
         string Update { get; }
+
+        string From { get; }
 
         string Values { get; }
 
@@ -43,8 +48,8 @@ namespace XDataAccess.QueryBuilder.Dialects {
 
         string Set { get; }
 
-        string GetEntityName (string entityName);
+        string GetEntityName(string entityName);
 
-        string GetAttributeName (string entityName, string attributeName);
+        string GetAttributeName(string entityName, string attributeName);
     }
 }

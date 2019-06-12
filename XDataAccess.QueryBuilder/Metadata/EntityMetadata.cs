@@ -19,6 +19,18 @@ namespace XDataAccess.QueryBuilder.Metadata
             }
         }
 
+        public IEnumerable<AttributeMetadata> IdentityAttributes
+        {
+            get
+            {
+                return Attributes.Where(a => a.Identity);
+            }
+        }
+
+        public bool HasIdentityAttribute { get { return IdentityAttributes.Count() > 0; } }
+
+        public bool IsValidForInsertOrUpdate { get { return AttributesForInsertOrUpdate.Count() > 0; } }
+
         public AttributeMetadata GetAttribute(string propertyName)
         {
             return Attributes.FirstOrDefault(a => a.PropertyName == propertyName);

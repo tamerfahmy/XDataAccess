@@ -3,26 +3,24 @@ using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
 using XDataAccess.QueryBuilder.Compilers.Databases;
 
-namespace XDataAccess.QueryBuilder.CRUD {
-    public sealed class Update : ICrudOperation {
-        private IResult updateResult;
+namespace XDataAccess.QueryBuilder.CRUD
+{
+    public sealed class Update : ICrudOperation
+    {
         public ICompiler Compiler { get; private set; }
-        internal Update (ICompiler compiler) {
+        internal Update(ICompiler compiler)
+        {
             Compiler = compiler;
         }
 
-        internal Update CompileUpdate<TEntity> (TEntity entity) where TEntity : class {
-            updateResult = Compiler.CompileUpdate<TEntity> (entity);
-            return this;
+        internal IResult CompileUpdate<TEntity>(TEntity entity) where TEntity : class
+        {
+            return Compiler.CompileUpdate<TEntity>(entity);
         }
-        public IResult Compile () {
-            return updateResult;
-        }
-        public IResult Where<TEntity> (Expression<Func<TEntity, bool>> exp) where TEntity : class {
-            var result = updateResult as DbCompileResult;
-            var whereResult = Compiler.CompileWhere<TEntity> (exp) as DbCompileResult;
 
-            return result.Merge (whereResult, Compiler.Dialect);
+        public IResult CompileUpdate<TEntity>(TEntity entity, Expression<Func<TEntity, bool>> exp) where TEntity : class
+        {
+            return Compiler.CompileUpdate<TEntity>(entity, exp);
         }
     }
 }
