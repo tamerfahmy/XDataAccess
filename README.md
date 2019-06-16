@@ -31,15 +31,6 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
   - [x] Oracle dialect
   - [x] MySql dialect
   - [x] Postgres dialect
-- [ ] **ORM Integration**
-  - [ ] Dapper ORM Integration
-  - [ ] ORM Lite Integration
-- [ ] **Generic Repository**
-  - [ ] Generic Repository Pattern Implementation
-  - [ ] IoC
-  - [ ] UoW
-- [ ]  **MS Common Data Service**
-  - [ ] Adding support to Microsoft Common Data Service (CDS)
   
 #### How to Use
 ##### Models
