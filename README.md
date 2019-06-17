@@ -18,7 +18,7 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
 #### Libraries
 | Project | Pipeline  Status | Latest Release |
 | --- | --- | --- |
-| XDataAccess.QueryBuilder | [![Build Status](https://tamerfahmy.visualstudio.com/XDataAccess/_apis/build/status/tamerfahmy.XDataAccess?branchName=master)](https://tamerfahmy.visualstudio.com/XDataAccess/_build/latest?definitionId=6&branchName=master) |  |
+| XDataAccess.QueryBuilder | [![Build Status](https://tamerfahmy.visualstudio.com/XDataAccess/_apis/build/status/tamerfahmy.XDataAccess?branchName=master)](https://tamerfahmy.visualstudio.com/XDataAccess/_build/latest?definitionId=6&branchName=master) | v0.1.0 Preview |
 
 #### Features
 - [x]  **Query Generation**
