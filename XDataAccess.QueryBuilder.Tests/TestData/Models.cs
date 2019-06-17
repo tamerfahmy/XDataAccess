@@ -1,7 +1,7 @@
 using System;
 using XDataAccess.QueryBuilder.Attributes;
 
-namespace XDataAccess.QueryBuilder.Tests.TestData
+namespace XDataAccess.QueryBuilder.Tests.TestModels
 {
     public class Employee
     {

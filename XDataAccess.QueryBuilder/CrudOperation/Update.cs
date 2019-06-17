@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
 using XDataAccess.QueryBuilder.Compilers.Databases;
 
-namespace XDataAccess.QueryBuilder.CRUD
+namespace XDataAccess.QueryBuilder.CrudOperation
 {
     public sealed class Update : ICrudOperation
     {

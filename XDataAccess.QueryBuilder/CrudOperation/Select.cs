@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
 
-namespace XDataAccess.QueryBuilder.CRUD
+namespace XDataAccess.QueryBuilder.CrudOperation
 {
     public sealed class Select : ICrudOperation
     {

@@ -25,5 +25,10 @@ namespace XDataAccess.QueryBuilder.Expressions.Databases
 
             return paramName;
         }
+
+        public override string ToString()
+        {
+            return SqlQuery;
+        }
     }
 }

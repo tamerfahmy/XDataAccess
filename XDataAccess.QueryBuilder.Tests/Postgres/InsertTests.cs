@@ -2,7 +2,7 @@ using XDataAccess.QueryBuilder.Attributes;
 using XDataAccess.QueryBuilder.Compilers.Databases;
 using Xunit;
 using System;
-using XDataAccess.QueryBuilder.Tests.TestData;
+using XDataAccess.QueryBuilder.Tests.TestModels;
 
 namespace XDataAccess.QueryBuilder.Tests.Postgres
 {

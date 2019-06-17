@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
-using XDataAccess.QueryBuilder.CRUD;
+using XDataAccess.QueryBuilder.CrudOperation;
+using XDataAccess.QueryBuilder.Logger;
 using XDataAccess.QueryBuilder.Metadata;
 
 namespace XDataAccess.QueryBuilder
@@ -11,6 +12,8 @@ namespace XDataAccess.QueryBuilder
     {
         private EntityMetadata _entityMetadata;
         private ICompiler _compiler;
+
+        public ILogger Logger { get; set; }
 
         public EntityMetadata EntityMetadata
         {
@@ -28,51 +31,77 @@ namespace XDataAccess.QueryBuilder
             _compiler = compiler;
         }
 
+        public QueryBuilder(ICompiler compiler, ILogger logger)
+        {
+            _compiler = compiler;
+            Logger = logger;
+        }
+
         public IResult Insert(TEntity entity)
         {
             var insert = new Insert(_compiler);
-            return insert.Compile(entity);
+            var result = insert.Compile(entity);
+            LogResult(result);
+            return result;
         }
 
         public IResult Delete()
         {
             var delete = new Delete(_compiler);
-            return delete.Compile<TEntity>();
+            var result = delete.Compile<TEntity>();
+            LogResult(result);
+            return result;
         }
 
         public IResult Delete(Expression<Func<TEntity, bool>> where)
         {
             var delete = new Delete(_compiler);
-            return delete.Compile(where);
+            var result = delete.Compile(where);
+            LogResult(result);
+            return result;
         }
 
         public IResult Update(TEntity entity)
         {
             var update = new Update(_compiler);
-            return update.CompileUpdate(entity);
+            var result = update.CompileUpdate(entity);
+            LogResult(result);
+            return result;
         }
 
-        public IResult Update(TEntity entity, Expression<Func<TEntity, bool>> exp)
+        public IResult Update(TEntity entity, Expression<Func<TEntity, bool>> where)
         {
             var update = new Update(_compiler);
-            return update.CompileUpdate(entity, exp);
+            var result = update.CompileUpdate(entity, where);
+            LogResult(result);
+            return result;
         }
 
         public IResult Select(Expression<Func<TEntity, bool>> exp)
         {
             var Select = new Select(_compiler);
-            return Select.CompileSelect(exp);
+            var result = Select.CompileSelect(exp);
+            LogResult(result);
+            return result;
         }
 
         public IResult Select()
         {
             var Select = new Select(_compiler);
-            return Select.CompileSelect<TEntity>();
+            var result = Select.CompileSelect<TEntity>();
+            LogResult(result);
+            return result;
         }
 
         public void Dispose()
         {
             throw new System.NotImplementedException();
+        }
+
+        private void LogResult(IResult result)
+        {
+            if (Logger != null && result != null)
+                Logger.Debug(result.ToString());
         }
     }
 }

@@ -18,12 +18,7 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
 #### Libraries
 | Project | Pipeline  Status | Latest Release |
 | --- | --- | --- |
-| XDataAccess.QueryBuilder | [![Build Status](https://tamerfahmy.visualstudio.com/XDataAccess/_apis/build/status/tamerfahmy.XDataAccess?branchName=master)](https://tamerfahmy.visualstudio.com/XDataAccess/_build/latest?definitionId=6&branchName=master) |  | XDataAccess.Dapper |  |  |
-| XDataAccess.DapperRepository |  |  |
-| XDataAccess.ORMLite |  |  |
-| XDataAccess.ORMLiteRepository |  |  |
-| XDataAccess.CDS |  |  |
-| XDataAccess.CDSRepository |  |  |
+| XDataAccess.QueryBuilder | [![Build Status](https://tamerfahmy.visualstudio.com/XDataAccess/_apis/build/status/tamerfahmy.XDataAccess?branchName=master)](https://tamerfahmy.visualstudio.com/XDataAccess/_build/latest?definitionId=6&branchName=master) |  |
 
 #### Features
 - [x]  **Query Generation**
@@ -31,15 +26,6 @@ xDataAccess is an open-source cross-platform framework to dynamically build quir
   - [x] Oracle dialect
   - [x] MySql dialect
   - [x] Postgres dialect
-- [ ] **ORM Integration**
-  - [ ] Dapper ORM Integration
-  - [ ] ORM Lite Integration
-- [ ] **Generic Repository**
-  - [ ] Generic Repository Pattern Implementation
-  - [ ] IoC
-  - [ ] UoW
-- [ ]  **MS Common Data Service**
-  - [ ] Adding support to Microsoft Common Data Service (CDS)
   
 #### How to Use
 ##### Models

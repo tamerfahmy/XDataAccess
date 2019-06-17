@@ -54,5 +54,10 @@ namespace XDataAccess.QueryBuilder.Compilers.Databases
 
             return this;
         }
+
+        public override string ToString()
+        {
+            return SqlQuery;
+        }
     }
 }

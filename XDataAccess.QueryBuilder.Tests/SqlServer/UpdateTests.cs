@@ -1,5 +1,5 @@
 using XDataAccess.QueryBuilder.Compilers.Databases;
-using XDataAccess.QueryBuilder.Tests.TestData;
+using XDataAccess.QueryBuilder.Tests.TestModels;
 using Xunit;
 
 namespace XDataAccess.QueryBuilder.Tests.SqlServer
@@ -33,7 +33,7 @@ namespace XDataAccess.QueryBuilder.Tests.SqlServer
 
             Assert.NotNull(result);
             Assert.Equal(2, result.QueryParameters.Count);
-            Assert.Equal(null, result.QueryParameters["@P0"]);
+            Assert.Null(result.QueryParameters["@P0"]);
             Assert.Equal(1, result.QueryParameters["@P1"]);
             Assert.Equal("UPDATE dbo.employee SET [name] = @P0 WHERE [Id] = @P1", result.SqlQuery);
         }

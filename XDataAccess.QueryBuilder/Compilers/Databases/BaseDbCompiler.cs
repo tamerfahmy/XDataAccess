@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using XDataAccess.QueryBuilder.CRUD;
 using XDataAccess.QueryBuilder.Dialects;
 using XDataAccess.QueryBuilder.Expressions;
 using XDataAccess.QueryBuilder.Expressions.Databases;
+using XDataAccess.QueryBuilder.Logger;
 using XDataAccess.QueryBuilder.Metadata;
 
 namespace XDataAccess.QueryBuilder.Compilers.Databases

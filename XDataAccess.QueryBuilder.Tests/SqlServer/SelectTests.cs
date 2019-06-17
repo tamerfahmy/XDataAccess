@@ -1,5 +1,5 @@
 using XDataAccess.QueryBuilder.Compilers.Databases;
-using XDataAccess.QueryBuilder.Tests.TestData;
+using XDataAccess.QueryBuilder.Tests.TestModels;
 using Xunit;
 
 namespace XDataAccess.QueryBuilder.Tests.SqlServer
