@@ -1,10 +1,11 @@
 using System;
 using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
+using XDataAccess.QueryBuilder.CrudOperation.Interfaces;
 
 namespace XDataAccess.QueryBuilder.CrudOperation
 {
-    public sealed class Delete : ICrudOperation
+    public sealed class Delete : IDelete
     {
         public ICompiler Compiler { get; private set; }
 

@@ -1,13 +1,14 @@
 using System;
 using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
+using XDataAccess.QueryBuilder.CrudOperation.Interfaces;
 
 namespace XDataAccess.QueryBuilder.CrudOperation
 {
-    public sealed class Select : ICrudOperation
+    public sealed class Select : ISelect
     {
         public ICompiler Compiler { get; private set; }
-        internal Select(ICompiler compiler)
+        public Select(ICompiler compiler)
         {
             Compiler = compiler;
         }

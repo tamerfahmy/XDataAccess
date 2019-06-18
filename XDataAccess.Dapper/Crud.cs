@@ -12,7 +12,7 @@ namespace XDataAccess.Dapper
 {
     public class Crud : IDisposable
     {
-        private IDbConnection _connection;
+        private Func<IDbConnection> _connectionCallback;
         public ILogger Logger { get; private set; }
         public ICompiler Compiler { get; private set; }
         public Crud(ICompiler compiler, ILogger logger, Func<IDbConnection> connectionCallback) : this(compiler, connectionCallback)
@@ -23,7 +23,7 @@ namespace XDataAccess.Dapper
         public Crud(ICompiler compiler, Func<IDbConnection> connectionCallback)
         {
             Compiler = compiler;
-            _connection = connectionCallback();
+            _connectionCallback = connectionCallback;
         }
 
         public IEnumerable<TEntity> Select<TEntity>(IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : class
@@ -32,7 +32,12 @@ namespace XDataAccess.Dapper
 
             var queryBuilder = new QueryBuilder<TEntity>(Compiler, Logger);
             var query = queryBuilder.Select() as DbCompileResult;
-            return _connection.Query<TEntity>(query.SqlQuery, transaction: transaction, commandTimeout: commandTimeout);
+
+            return _connectionCallback().Query<TEntity>(
+                sql: query.SqlQuery,
+                param: query.QueryParameters,
+                transaction: transaction,
+                commandTimeout: commandTimeout);
         }
 
         public IEnumerable<TEntity> Select<TEntity>(Expression<Func<TEntity, bool>> where, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : class
@@ -41,7 +46,13 @@ namespace XDataAccess.Dapper
 
             var queryBuilder = new QueryBuilder<TEntity>(Compiler, Logger);
             var query = queryBuilder.Select(where) as DbCompileResult;
-            return _connection.Query<TEntity>(query.SqlQuery, transaction: transaction, commandTimeout: commandTimeout);
+
+
+            return _connectionCallback().Query<TEntity>(
+                sql: query.SqlQuery,
+                param: query.QueryParameters,
+                transaction: transaction,
+                commandTimeout: commandTimeout);
         }
 
         public int Insert<TEntity>(TEntity entity, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : class
@@ -49,11 +60,12 @@ namespace XDataAccess.Dapper
             var queryBuilder = new QueryBuilder<TEntity>(Compiler, Logger);
             var query = queryBuilder.Insert(entity) as DbCompileResult;
 
-            return _connection.Execute(sql: query.SqlQuery,
-                               param: query.QueryParameters,
-                               transaction: transaction,
-                               commandTimeout: commandTimeout,
-                               commandType: CommandType.Text);
+            return _connectionCallback().Execute(
+                sql: query.SqlQuery,
+                param: query.QueryParameters,
+                transaction: transaction,
+                commandTimeout: commandTimeout,
+                commandType: CommandType.Text);
         }
 
         public int Update<TEntity>(TEntity entity, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : class
@@ -61,11 +73,12 @@ namespace XDataAccess.Dapper
             var queryBuilder = new QueryBuilder<TEntity>(Compiler, Logger);
             var query = queryBuilder.Update(entity) as DbCompileResult;
 
-            return _connection.Execute(sql: query.SqlQuery,
-                               param: query.QueryParameters,
-                               transaction: transaction,
-                               commandTimeout: commandTimeout,
-                               commandType: CommandType.Text);
+            return _connectionCallback().Execute(
+                sql: query.SqlQuery,
+                param: query.QueryParameters,
+                transaction: transaction,
+                commandTimeout: commandTimeout,
+                commandType: CommandType.Text);
         }
 
         public int Update<TEntity>(TEntity entity, Expression<Func<TEntity, bool>> where, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : class
@@ -73,11 +86,12 @@ namespace XDataAccess.Dapper
             var queryBuilder = new QueryBuilder<TEntity>(Compiler, Logger);
             var query = queryBuilder.Update(entity, where) as DbCompileResult;
 
-            return _connection.Execute(sql: query.SqlQuery,
-                               param: query.QueryParameters,
-                               transaction: transaction,
-                               commandTimeout: commandTimeout,
-                               commandType: CommandType.Text);
+            return _connectionCallback().Execute(
+                sql: query.SqlQuery,
+                param: query.QueryParameters,
+                transaction: transaction,
+                commandTimeout: commandTimeout,
+                commandType: CommandType.Text);
         }
 
         public int Delete<TEntity>(Expression<Func<TEntity, bool>> where, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : class
@@ -85,18 +99,17 @@ namespace XDataAccess.Dapper
             var queryBuilder = new QueryBuilder<TEntity>(Compiler, Logger);
             var query = queryBuilder.Delete(where) as DbCompileResult;
 
-            return _connection.Execute(sql: query.SqlQuery,
-                               param: query.QueryParameters,
-                               transaction: transaction,
-                               commandTimeout: commandTimeout,
-                               commandType: CommandType.Text);
+            return _connectionCallback().Execute(
+                sql: query.SqlQuery,
+                param: query.QueryParameters,
+                transaction: transaction,
+                commandTimeout: commandTimeout,
+                commandType: CommandType.Text);
         }
-
 
         private void AddDapperCustomAttributesMapper<TEntity>() where TEntity : class
         {
-            if (SqlMapper.GetTypeMap(typeof(TEntity)) == null)
-                SqlMapper.SetTypeMap(typeof(TEntity), new ColumnAttributeTypeMapper<TEntity>());
+            SqlMapper.SetTypeMap(typeof(TEntity), new ColumnAttributeTypeMapper<TEntity>());
         }
 
         public void Dispose()

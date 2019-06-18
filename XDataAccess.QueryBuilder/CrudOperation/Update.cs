@@ -1,19 +1,19 @@
 using System;
 using System.Linq.Expressions;
 using XDataAccess.QueryBuilder.Compilers;
-using XDataAccess.QueryBuilder.Compilers.Databases;
+using XDataAccess.QueryBuilder.CrudOperation.Interfaces;
 
 namespace XDataAccess.QueryBuilder.CrudOperation
 {
-    public sealed class Update : ICrudOperation
+    public sealed class Update : IUpdate
     {
         public ICompiler Compiler { get; private set; }
-        internal Update(ICompiler compiler)
+        public Update(ICompiler compiler)
         {
             Compiler = compiler;
         }
 
-        internal IResult CompileUpdate<TEntity>(TEntity entity) where TEntity : class
+        public IResult CompileUpdate<TEntity>(TEntity entity) where TEntity : class
         {
             return Compiler.CompileUpdate<TEntity>(entity);
         }

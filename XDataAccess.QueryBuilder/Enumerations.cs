@@ -10,4 +10,10 @@ namespace XDataAccess.QueryBuilder
         Oracle,
         Sqlite
     }
+
+    public enum CrudOperationType
+    {
+        Database,
+        CDS
+    }
 }
